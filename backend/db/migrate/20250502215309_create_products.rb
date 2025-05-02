@@ -4,7 +4,8 @@ class CreateProducts < ActiveRecord::Migration[7.1]
       t.string :name
       t.decimal :price
 
-      t.timestamps
+      t.datetime :created_at, null: false
+      t.datetime :updated_at, null: false
     end
   end
 end

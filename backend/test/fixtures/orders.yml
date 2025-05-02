@@ -2,10 +2,8 @@
 
 one:
   user: one
-  product: one
-  quantity: 1
+  total: 9.99
 
 two:
   user: two
-  product: two
-  quantity: 1
+  total: 9.99
