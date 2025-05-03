@@ -7,4 +7,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  resources :users
+  resources :products
+  resources :orders do
+    resources :order_items, only: [:index, :create, :update, :destroy]
+  end
 end
