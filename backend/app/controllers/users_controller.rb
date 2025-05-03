@@ -2,7 +2,9 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
 
   def index
-    @users = User.all
+    @users = User.all.map do |user| 
+      user.as_json(except: [:password_digest])
+    end
     render(json: @users)
   end
 
@@ -12,12 +14,12 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.save ? render(json: @user, status: :created) : render(json: @user.errors, status: :unprocessable_entity)
+    @user.save ? render(json: @user.as_json(except: [:password_digest]), status: :created) : render(json: @user.errors, status: :unprocessable_entity)
   end
 
   def update
     update_params = user_params.except(:email)
-    @user.update(update_params) ? render(json: @user) : render(json: @user.errors, status: :unprocessable_entity)
+    @user.update(update_params) ? render(json: @user.as_json(except: [:password_digest])) : render(json: @user.errors, status: :unprocessable_entity)
   end
 
   def destroy
