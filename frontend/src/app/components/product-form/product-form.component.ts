@@ -6,8 +6,7 @@ import { ProductService } from '../../services/product.service';
   selector: 'app-product-form',
   standalone: true,
   imports: [ReactiveFormsModule],
-  templateUrl: './product-form.component.html',
-  styleUrls: ['./product-form.component.css']
+  templateUrl: './product-form.component.html'
 })
 export class ProductFormComponent implements OnInit {
   form!: FormGroup;
