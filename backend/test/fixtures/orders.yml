@@ -2,8 +2,10 @@
 
 one:
   user: one
-  total: 9.99
+  total_price: 9.99
+  status: 1
 
 two:
   user: two
-  total: 9.99
+  total_price: 9.99
+  status: 1

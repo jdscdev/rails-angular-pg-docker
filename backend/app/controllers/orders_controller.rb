@@ -3,39 +3,34 @@ class OrdersController < ApplicationController
 
   def index
     @orders = Order.all
-    render json: @orders
+    render(json: @orders)
   end
   
   def show
-    render json: @order
+    render(json: @order)
   end
 
   def create
     @order = Order.new(order_params)
-    if @order.save
-      render json: @order, status: :created
-    else
-      render json: @order.errors, status: :unprocessable_entity
-    end
+    @order.save ? render(json: @order, status: :created) : render(json: @order.errors, status: :unprocessable_entity)
   end
 
   def update
-    if @order.update(order_params)
-      render json: @order
-    else
-      render json: @order.errors, status: :unprocessable_entity
-    end
+    update_params = order_params.except(:user_id)
+    @order.update(update_params) ? render(json: @order) : render(json: @order.errors, status: :unprocessable_entity)
   end
 
   def destroy
     @order.destroy
-    head :no_content
+    head(:no_content)
   end
 
   private
 
   def set_order
     @order = Order.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    render(json: { error: 'Order not found' }, status: :not_found)
   end
 
   def order_params

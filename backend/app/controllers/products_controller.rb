@@ -3,39 +3,33 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
-    render json: @products
+    render(json: @products)
   end
   
   def show
-    render json: @product
+    render(json: @product)
   end
   
   def create
     @product = Product.new(product_params)
-    if @product.save
-      render json: @product, status: :created
-    else
-      render json: @product.errors, status: :unprocessable_entity
-    end
+    @product.save ? render(json: @product, status: :created) : render(json: @product.errors, status: :unprocessable_entity)
   end
   
   def update
-    if @product.update(product_params)
-      render json: @product
-    else
-      render json: @product.errors, status: :unprocessable_entity
-    end
+    @product.update(product_params) ? render(json: @product) : render(json: @product.errors, status: :unprocessable_entity)
   end
   
   def destroy
     @product.destroy
-    head :no_content
+    head(:no_content)
   end
 
   private
 
   def set_product
     @product = Product.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    render(json: { error: 'Product not found' }, status: :not_found)
   end
 
   def product_params

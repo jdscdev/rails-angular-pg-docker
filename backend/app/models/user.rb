@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
-  validates :password_digest, presence: true, length: { minimum: 8 }
+  validates :password, length: { minimum: 8 }, if: -> { new_record? || !password.nil? }
 
   has_many :orders, dependent: :destroy
 end
