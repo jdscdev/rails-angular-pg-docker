@@ -1,12 +1,14 @@
 <h2>Create Product</h2>
-<!-- <div [formGroup]="form" (ngSubmit)="submit()"> -->
+<form [formGroup]="form" (ngSubmit)="submit()">
   <label>
     Name:
-    <!-- <input formControlName="name" /> -->
+    <input formControlName="name" />
   </label>
+  <br />
   <label>
     Price:
-    <!-- <input formControlName="price" type="number" /> -->
+    <input formControlName="price" type="number" />
   </label>
+  <br />
   <button type="submit">Submit</button>
-<!-- </div> -->
+</form>
