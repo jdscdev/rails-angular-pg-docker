@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { ProductFormComponent } from './components/product-form/product-form.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  imports: [
+    ProductFormComponent,
+    ProductListComponent
+  ],
 })
-export class AppComponent {
-  title = 'frontend';
-}
+export class AppComponent {}

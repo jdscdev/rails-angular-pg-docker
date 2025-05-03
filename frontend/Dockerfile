@@ -1,13 +1,12 @@
-# Stage 1: Build the Angular app
-FROM node:23-alpine AS build
+# Use Debian-based image to avoid musl / native binding issues
+FROM node:18-bullseye
 
-WORKDIR /app
+WORKDIR /src
 
-# Copy and install deps
+# Install deps cleanly inside Docker only
 COPY package*.json ./
-RUN npm install
+RUN npm ci
 
-# Add app source
 COPY . .
 
 EXPOSE 4200
