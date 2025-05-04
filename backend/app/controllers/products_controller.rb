@@ -15,11 +15,19 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    @product.save ? render(json: @product, status: :created) : render(json: @product.errors, status: :unprocessable_entity)
+    if @product.save
+      render(json: @product, status: :created)
+    else
+      render(json: @product.errors, status: :unprocessable_entity)
+    end
   end
 
   def update
-    @product.update(product_params) ? render(json: @product) : render(json: @product.errors, status: :unprocessable_entity)
+    if @product.update(product_params)
+      render(json: @product)
+    else
+      render(json: @product.errors, status: :unprocessable_entity)
+    end
   end
 
   def destroy

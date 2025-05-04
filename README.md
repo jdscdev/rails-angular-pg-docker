@@ -37,3 +37,15 @@ rails server -b 0.0.0.0
 cd ../frontend
 npm start
 ```
+
+6. **Running manually a Sidekiq job**
+```bash
+cd backend
+# Opens rails console
+rails c
+# Inside rails console perform HelloJob (backend/app/sidekiq/hello_job.rb):
+HelloJob.perform_async("Rails Developer")
+exit
+# Open Sidekiq terminal, check that "Hello, Rails Developer from Sidekiq!" is printed
+bundle exec sidekiq
+```
