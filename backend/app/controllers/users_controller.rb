@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[show update destroy]
 
   def index
-    @users = User.all.map do |user| 
+    @users = User.all.map do |user|
       user.as_json(except: [:password_digest])
     end
     render(json: @users)

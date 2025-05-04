@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
     @orders = Order.all
     render(json: @orders)
   end
-  
+
   def show
     render(json: @order)
   end
