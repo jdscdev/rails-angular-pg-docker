@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
+# This controller manages the orders in the system.
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :update, :destroy]
+  before_action :set_order, only: %i[show update destroy]
 
   def index
     @orders = Order.all

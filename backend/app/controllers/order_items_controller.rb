@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# This file is part of the Order Management System.
 class OrderItemsController < ApplicationController
   before_action :set_order
 
