@@ -1,5 +1,5 @@
 # Use Debian-based image to avoid musl / native binding issues
-FROM node:18-bullseye
+FROM node:23-bullseye
 
 WORKDIR /src
 
@@ -10,4 +10,8 @@ RUN npm ci
 COPY . .
 
 EXPOSE 4200
+# Create a non-root user and switch to it
+RUN useradd -m appuser
+USER appuser
+
 CMD ["npm", "start"]

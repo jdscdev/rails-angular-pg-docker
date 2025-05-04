@@ -20,5 +20,9 @@ COPY . .
 # Fix file permissions for mounted volumes (skip non-root user for dev)
 RUN mkdir -p tmp/pids
 
+# Create a non-root user and switch to it
+RUN addgroup --system appgroup && adduser --system --ingroup appgroup appuser
+USER appuser
+
 EXPOSE 3000
 CMD ["bash", "-c", "rm -f tmp/pids/server.pid && bundle exec rails s -b 0.0.0.0"]
