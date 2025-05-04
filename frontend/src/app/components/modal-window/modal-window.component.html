@@ -1,0 +1,17 @@
+<div class="modal-overlay">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+	<h2>Edit Product</h2>
+    <form [formGroup]="form" (ngSubmit)="submitModal()">
+      <input formControlName="id" type="hidden" />
+      <label>{{ product.name }}</label>
+      <br />
+      <label>
+        Price:
+        <input formControlName="price" type="number" />
+      </label>
+      <br />
+      <button type="submit">Submit</button>
+      <button (click)="closeModal()">Close</button>
+    </form>
+  </div>
+</div>
