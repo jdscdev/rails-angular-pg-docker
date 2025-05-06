@@ -1,0 +1,6 @@
+plugins:
+  # - rubocop-minitest
+  # - rubocop-packaging
+  # - rubocop-performance
+  - rubocop-rails
+  # - rubocop-md
