@@ -4,3 +4,27 @@ plugins:
   # - rubocop-performance
   - rubocop-rails
   # - rubocop-md
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - 'Gemfile'
+    - 'Gemfile.lock'
+
+Naming/FileName:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+  Exclude:
+    - 'schema.rb'
+
+Metrics/BlockLength:
+  Max: 100
+  Exclude:
+    - 'schema.rb'
